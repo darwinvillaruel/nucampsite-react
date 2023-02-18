@@ -5,6 +5,7 @@ import React from 'react';
 import Header from './components/Header';
 import './App.css';
 import CampsitesDirectoryPage from './pages/CampsitesDirectoryPage';
+import CampsiteDetailPage from './pages/CampsiteDetailPage';
 import Footer from './components/Footer';
 
 function App() {
@@ -23,6 +24,10 @@ function App() {
         <Route
           path='directory'
           element={<CampsitesDirectoryPage />}
+        />
+        <Route
+          path='directory/:campsiteId'
+          element={<CampsiteDetailPage />}
         />
       </Routes>
       <Footer />
