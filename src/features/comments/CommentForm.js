@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import {
   Button,
   Modal,
@@ -9,17 +10,21 @@ import {
 } from 'reactstrap';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { validateCommentForm } from '../../utils/validateCommentForm';
+import { addComment } from './commentsSlice';
 
 const CommentForm = ({ campsiteId }) => {
   const [modalOpen, setModalOpen] = useState(false);
+  const dispatch = useDispatch();
   const handleSubmit = (values) => {
     const comment = {
       campsiteId: parseInt(campsiteId),
       rating: values.rating,
       author: values.author,
       text: values.commentText,
+      date: new Date(Date.now()).toISOString(),
     };
     console.log(comment);
+    dispatch(addComment(comment));
     setModalOpen(false);
   };
 
@@ -58,7 +63,7 @@ const CommentForm = ({ campsiteId }) => {
                   {(msg) => <p className='text-danger'>{msg}</p>}
                 </ErrorMessage>
               </FormGroup>
-              <FormGroup >
+              <FormGroup>
                 <Label htmlFor='author'>Your Name</Label>
                 <Field
                   name='author'
@@ -69,7 +74,7 @@ const CommentForm = ({ campsiteId }) => {
                   {(msg) => <p className='text-danger'>{msg}</p>}
                 </ErrorMessage>
               </FormGroup>
-              <FormGroup >
+              <FormGroup>
                 <Label htmlFor='commentText'>Comment</Label>
                 <Field
                   name='commentText'
