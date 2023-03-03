@@ -58,8 +58,8 @@ const CommentForm = ({ campsiteId }) => {
                   {(msg) => <p className='text-danger'>{msg}</p>}
                 </ErrorMessage>
               </FormGroup>
-              <FormGroup htmlFor='author'>
-                <Label>Your Name</Label>
+              <FormGroup >
+                <Label htmlFor='author'>Your Name</Label>
                 <Field
                   name='author'
                   placeholder='Your Name'
@@ -69,8 +69,8 @@ const CommentForm = ({ campsiteId }) => {
                   {(msg) => <p className='text-danger'>{msg}</p>}
                 </ErrorMessage>
               </FormGroup>
-              <FormGroup htmlFor='commentText'>
-                <Label>Comment</Label>
+              <FormGroup >
+                <Label htmlFor='commentText'>Comment</Label>
                 <Field
                   name='commentText'
                   as='textarea'
